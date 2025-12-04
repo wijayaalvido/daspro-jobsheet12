@@ -37,13 +37,9 @@ public class Kafe05 {
         double diskon = 0;
 
         if (kodePromo.equals("DISKON50")) {
-            System.out.println("Diskon 50% berhasil diterapkan!");
             diskon = hargaTotal * 0.50;
         } else if (kodePromo.equals("DISKON30")) {
-            System.out.println("Diskon 30% berhasil diterapkan!");
             diskon = hargaTotal * 0.30;
-        } else {
-            System.out.println("Kode promo tidak valid (tanpa diskon)");
         }
 
         return (int) (hargaTotal - diskon);
@@ -60,14 +56,30 @@ public class Kafe05 {
 
         Menu(nama, member, kodePromo);
 
-        System.out.print("\nMasukkan nomor menu yang ingin Anda pesan: ");
-        int pilihanMenu = sc.nextInt();
+        int totalKeseluruhan = 0;
 
-        System.out.print("Masukkan jumlah item yang ingin dipesan: ");
-        int banyakItem = sc.nextInt();
+        System.out.print("\nBerapa jenis menu yang ingin Anda pesan? ");
+        int jumlahJenisMenu = sc.nextInt();
 
-        int totalHarga = hitungTotalHarga05(pilihanMenu, banyakItem, kodePromo);
-        System.out.println("\nTotal harga yang harus dibayar: Rp " + totalHarga);
+        for (int i = 1; i <= jumlahJenisMenu; i++) {
+            System.out.println("\nPesanan ke-" + i);
+
+            System.out.print("Masukkan nomor menu: ");
+            int pilihanMenu = sc.nextInt();
+
+            System.out.print("Masukkan jumlah item: ");
+            int banyakItem = sc.nextInt();
+
+            int totalPerMenu = hitungTotalHarga05(pilihanMenu, banyakItem, kodePromo);
+
+            System.out.println("Total untuk menu ini: Rp " + totalPerMenu);
+
+            totalKeseluruhan += totalPerMenu;
+        }
+
+        System.out.println("\n===============================");
+        System.out.println("Total keseluruhan pesanan: Rp " + totalKeseluruhan);
+        System.out.println("===============================");
 
         sc.close();
     }
