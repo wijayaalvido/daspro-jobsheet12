@@ -8,6 +8,6 @@ public static void daftarPengunjung(String...namaPengunjung) {
 
     }
     public static void main(String[] args) {
-    daftarPengunjung("Ali", "Budi", "Citra") ;
+    daftarPengunjung() ;
     }
 }
